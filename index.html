@@ -1,12 +1,29 @@
 <!DOCTYPE html>
+
 <head>
-  <title>YouTube Simple Directive Example</title>
+  <title>YouTube Service Directive Example</title>
   <link rel="stylesheet" type="text/css" href="application.css">
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.3/angular.min.js"></script>
   <script src="application.js"></script>
 </head>
 
-<body ng-app="MyApp">
-  <youtube width="680" height="400" videoid="M7lc1UVf-VE"></youtube>  
+<body ng-app="YouTubeApp">
+  <div ng-controller="YouTubeCtrl">
+    <youtube width="{{yt.width}}" height="{{yt.height}}" videoid="{{yt.videoid}}"></youtube>  
+    <br />
+    Width:<input type="text" ng-model="yt.width">
+    Height:<input type="text" ng-model="yt.height">
+    Videoid:<input type="text" ng-model="yt.videoid">
+
+    <br />
+
+    <button ng-click="sendControlEvent(YT_event.PLAY)">Send Play</button>
+    <button ng-click="sendControlEvent(YT_event.PAUSE)">Send Pause</button>
+    <button ng-click="sendControlEvent(YT_event.STOP)">Send Stop</button>
+
+    <p>Player status is: {{yt.playerStatus}}</p>
+
+  </div>
 </body>
+
 </html>
